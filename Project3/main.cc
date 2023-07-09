@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include "MaxHeap.h"
-//#include "Customer.h"
+#include "Customer.h"
 
+/*
 void testMaxHeap()
 {
     
@@ -80,10 +81,97 @@ void testMaxHeap2()
     std::cout << "Heap 5: " << std::endl; heap5.display();
 
 }
+*/
+
+void testCustomer()
+{
+    // TEST DEFAULT CONSTRUCTOR 
+    Customer cusomter1;
+    std::cout << "Default Constructor: " << std::endl;
+    std::cout << "Customer 1: " << std::endl; cusomter1.display();
+
+    // TEST MUTATORS
+    std::cout << "After Mutators: " << std::endl;
+    cusomter1.setName("Joe Mama");
+    cusomter1.setServiceTime(60);
+    cusomter1.setPriorityLevel(29);
+    std::cout << "Customer 1: " << std::endl; cusomter1.display();
+
+    // TEST OVERLOADED MUTATORS
+    cusomter1.setServiceTime();
+    cusomter1.setPriorityLevel();
+    std::cout << "After Overloaded Mutators: " << std::endl;
+    std::cout << "Customer 1: " << std::endl; cusomter1.display();
+
+    // TEST PARAMETERIZED & COPY CONSTRUCTOR
+    std::cout << "1 Parameter Constructor: " << std::endl;
+    Customer customer2("Uno");
+    std::cout << "Customer 2: " << std::endl; customer2.display();
+
+    std::cout << "2 Parameter Constructor: " << std::endl;
+    Customer customer3("Ryan", 60);
+    std::cout << "Customer 3: " << std::endl; customer3.display();
+
+    std::cout << "Copy Constructor customer4(customer1): " << std::endl;
+    Customer customer4(cusomter1);
+    std::cout << "Customer 4: " << std::endl; customer4.display();
+
+    // TEST COPY ASSIGNMENT
+    customer4 = customer3;
+    std::cout << "Copy Assignment customer4 = customer3: " << std::endl;
+    std::cout << "Customer 4: " << std::endl; customer4.display();
+
+    // TEST MOVE CONSTRUCTOR
+    Customer customer5 = std::move(customer2);
+    std::cout << "Move Constructor customer5 = move(customer2): " << std::endl;
+    std::cout << "Customer 5: " << std::endl; customer5.display();
+    std::cout << "Customer 2: " << std::endl; customer2.display();
+
+    // TEST MOVE ASSIGNMENT
+    customer2 = std::move(customer4);
+    std::cout << "Move Assignment customer2 = move(customer4): " << std::endl;
+    std::cout << "Customer 2: " << std::endl; customer2.display();
+    std::cout << "Customer 4: " << std::endl; customer4.display();
+}
+
+void testCustomer2()
+{
+    MaxHeap heap1;
+    std::cout << "Empty Heap: " << std::endl;
+    heap1.display();
+
+    Customer customer1("Joe Mama");
+    // customer1.display();
+    heap1.insert(customer1);
+    std::cout << "After Inserting 1 Customer: " << std::endl;
+    heap1.display();
+
+    Customer customer2("Jeff");
+    Customer customer3("Jeremy");
+    heap1.insert(customer2);
+    heap1.insert(customer3);
+    std::cout << "After Inserting 2 More Customers: " << std::endl;
+    heap1.display();
+
+    heap1.displayHistory();
+    heap1.deleteMax();
+    std::cout << "Heap After Deleting 1: " << std::endl;
+    heap1.display();
+    heap1.displayHistory();
+    heap1.deleteMax();
+    heap1.deleteMax();
+
+    std::cout << "Heap After Deleting All: " << std::endl;
+    heap1.display();
+    heap1.displayHistory();
+
+}
 
 int main()
 {
     //testMaxHeap();
-    testMaxHeap2();
+    //testMaxHeap2();
+    //testCustomer();
+    testCustomer2();
     return 0;
 }
