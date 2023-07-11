@@ -39,7 +39,15 @@ overload the << operator, so I referred to Project 1 on how to overload that.
     I wasn't sure if we wanted to maintain the template implementation of the
 MaxHeap class, but I just modified it so that it would accomdate Customer
 objects, so for the first 2 test heap functions I had to comment them out. 
+    Going back to it, I went and changed it so that we can maintain the
+template of the Max Heap class to handle things such as ints and doubles.
+I did this by doing template specialization, under the template class
+for Max Heap I had the same code but with template<> class MaxHeap<
+Customer> to handle the specific case where the Comparable is a 
+Customer class. Testing all the code we can compile all the test cases
+for the ints and Customer objects.
 
 Resources Used:
 Chapter 6. Priority Queue Notes
 https://www.geeksforgeeks.org/pre-increment-and-post-increment-in-c/#
+https://www.geeksforgeeks.org/template-specialization-c/
